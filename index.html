@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Luqman × Jabil Interview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: fixed 1280x720 stage scaled to fit; one idea per slide, each with one illustration; phones get stacked cards */
+:root{
+  --ink:#1F2A5C; --muted:#5A6699; --paper:#F6F3FD; --blush:#DDE3F8; --rose:#AEBDEA;
+  --blue:#3F5BB5; --amber:#F9B774; --sun:#F7E58F; --mint:#A8E0B5; --red:#E5484D; --line:#D6DCF2; --stage:#121836;
+  --f:"Inter","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{margin:0;background:var(--stage);color:var(--ink);font-family:var(--f);overflow:hidden}
+#viewport{position:fixed;inset:0}
+#stage{width:1280px;height:720px;position:absolute;left:50%;top:50%;transform-origin:center}
+.slide{position:absolute;inset:0;background:var(--paper);border-radius:14px;overflow:hidden;padding:72px 88px;box-sizing:border-box;display:none;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.slide.on{display:block}
+h1,h2,h3{margin:0;text-wrap:balance;color:var(--ink)}
+h2{font-size:50px;font-weight:800;letter-spacing:-.025em;line-height:1.05}
+h2 em,h1 em{font-style:normal;color:var(--blue)}
+.eb{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:12px}
+p{margin:0}
+svg{display:block}
+.art svg{width:100%;height:auto}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.a{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}.d5{animation-delay:.4s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 14s linear infinite}
+.spin.r{animation-direction:reverse;animation-duration:9s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.float{animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.draw{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 1.6s .3s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.a,.spin,.float{animation:none}.draw{animation:none;stroke-dashoffset:0}}
+.foot{position:absolute;left:88px;right:88px;bottom:28px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.08em;color:var(--muted)}
+.dark{background:linear-gradient(150deg,var(--ink),var(--blue))}
+.dark h2,.dark .eb{color:#fff}.dark .eb{color:var(--sun)}.dark .foot{color:var(--rose)}
+.split{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;height:100%}
+
+/* title + end */
+.hero{background:linear-gradient(120deg,#fff 0%,var(--paper) 40%,var(--blush) 75%,#A98FD6 100%)}
+.hero .glow{position:absolute;right:-160px;top:-100px;width:700px;height:860px;background:conic-gradient(from 200deg at 60% 50%,var(--blush),#7D8DDB,var(--blue),var(--rose),var(--blush));opacity:.4;filter:blur(30px);transform:rotate(18deg)}
+.hero .split{position:relative}
+.hero h1{font-size:76px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.hero .stack{display:flex;flex-direction:column;gap:24px}
+.chip{display:inline-block;background:var(--sun);color:var(--ink);font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;width:max-content;transform:rotate(-2deg)}
+.badge{display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 22px 10px 10px;width:max-content;max-width:100%;box-sizing:border-box;box-shadow:0 10px 30px rgba(63,91,181,.15)}
+.badge .av{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:700}
+.badge b{display:block;font-size:17px}.badge small{color:var(--muted);font-size:14px}
+
+/* about */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:38px}
+.num{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.num .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px}
+.num b{display:block;font-size:40px;font-weight:800;color:var(--blue);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.num span{display:block;margin-top:6px;font-size:15.5px;color:var(--muted);line-height:1.35}
+.path{display:flex;align-items:center;gap:0;margin-top:34px}
+.path div{flex:1;text-align:center;position:relative;font-size:14px;color:var(--muted)}
+.path div b{display:block;font-size:15px;color:var(--ink)}
+.path div::before{content:"";display:block;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--blue);margin:0 auto 8px;position:relative;z-index:1}
+.path div::after{content:"";position:absolute;top:10px;left:50%;width:100%;height:3px;background:var(--rose)}
+.path div:last-child::after{display:none}
+.path div:last-child::before{background:var(--blue)}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
+.row{display:grid;grid-template-columns:30px 1fr;gap:14px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:13px 18px;min-height:88px;box-sizing:border-box;transition:border-color .2s}
+.row .t{width:26px;height:26px;border-radius:50%;border:2px solid var(--rose);display:grid;place-items:center;color:transparent;font-size:14px}
+.row b{display:block;font-size:16.5px}
+.row span{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);line-height:1.4;visibility:hidden}
+.row.ok{border-color:var(--blue)}
+.row.ok .t{background:var(--blue);border-color:var(--blue);color:#fff}
+.row.ok span{visibility:visible}
+.meter{position:absolute;right:88px;top:52px;display:flex;align-items:center;gap:14px}
+.meter b{font-size:44px;font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums}
+.ghost{background:none;border:1.5px solid var(--blue);color:var(--blue);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px}
+
+/* SIGMA */
+.sg{display:grid;grid-template-columns:1fr 470px;gap:30px;margin-top:28px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tab{text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:center}
+.tab svg{flex:none}
+.tab b{display:block;font-size:17px}.tab small{color:var(--muted);font-size:13.5px}
+.tab.sel{background:var(--blue);border-color:var(--blue);color:#fff}.tab.sel small{color:var(--blush)}
+.tab.sel svg *{stroke:#fff}
+.panel{margin-top:12px;background:var(--blush);border-radius:16px;padding:20px 24px;min-height:140px;box-sizing:border-box}
+.panel ul{margin:0;padding-left:20px;font-size:17.5px;line-height:1.7}
+.mock{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 20px 50px rgba(31,42,92,.12)}
+.mock .top{display:flex;gap:6px;margin-bottom:12px}.mock .top i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.kpis div{background:var(--paper);border-radius:10px;padding:10px}
+.kpis small{display:block;font-size:11px;color:var(--muted)}.kpis b{font-size:20px}
+.prj{display:grid;grid-template-columns:1fr 70px;gap:6px 10px;align-items:center;font-size:13px;margin-top:12px}
+.pill{font-size:11px;font-weight:700;border-radius:999px;padding:3px 8px;text-align:center}
+.note{margin-top:14px;font-size:15px;color:var(--muted)}
+
+/* case */
+.flow{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.flow::before{content:"";position:absolute;left:12%;right:12%;top:46px;height:4px;background:repeating-linear-gradient(90deg,var(--blue) 0 12px,transparent 12px 20px)}
+.fl{position:relative;text-align:center}
+.fl .ic{width:92px;height:92px;border-radius:50%;margin:0 auto 14px;background:#fff;border:3px solid var(--blue);display:grid;place-items:center;box-shadow:0 10px 24px rgba(63,91,181,.18)}
+.fl .k{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--blue)}
+.fl p{font-size:16px;line-height:1.45;margin-top:6px}
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.res div{background:var(--ink);border-radius:16px;padding:18px 22px;color:#fff;display:flex;align-items:baseline;gap:12px}
+.res b{font-size:32px;font-weight:800;color:var(--sun)}
+.res span{font-size:15px;color:var(--blush)}
+
+/* plan */
+.road{position:relative;height:440px;margin-top:16px}
+.road>svg{position:absolute;inset:0;width:100%;height:100%}
+.ms{position:absolute;width:290px;color:#fff}
+.ms .pin{width:22px;height:22px;border-radius:50%;background:var(--sun);border:4px solid #fff;box-shadow:0 0 0 6px rgba(247,229,143,.3);margin-bottom:10px}
+.ms .k{font-size:12px;letter-spacing:.12em;color:var(--sun);font-weight:700}
+.ms h3{color:#fff;font-size:28px;margin:2px 0 6px}
+.ms ul{margin:0;padding-left:17px;font-size:15.5px;line-height:1.55;color:#E9ECFA}
+.goal{position:absolute;right:0;top:0;width:200px;height:200px}
+.goal p{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--ink);color:#fff;font-size:13.5px;padding:9px 12px;border-radius:10px;width:150px;text-align:center;line-height:1.35}
+
+.contact{display:flex;gap:12px;flex-wrap:wrap}
+.contact span{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 18px;font-size:17px;user-select:all}
+
+/* chrome */
+#bar{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;align-items:center;justify-content:center;color:#C9CEE1;font-size:13px;z-index:5;transition:opacity .3s}
+#bar button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:8px;padding:6px 12px;font-size:13px}
+#count{min-width:56px;text-align:center}
+#prog{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--blue));transition:width .3s;z-index:6}
+body.idle #bar{opacity:0}
+
+
+/* Jabil extras */
+.hero h1{font-size:68px}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.board div{background:var(--paper);border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:6px;min-height:150px}
+.board small{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.board span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 8px;font-size:12px;border-left:4px solid var(--rose)}
+.board span.hot{border-left-color:var(--amber)}.board span.ok{border-left-color:#2F8A4C}
+.pipe{display:flex;align-items:center;gap:6px;margin-top:14px;flex-wrap:wrap}
+.pipe span{background:var(--blush);border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600}
+.pipe span.ok{background:#E3F5E8;color:#2F8A4C}.pipe i{font-style:normal;color:var(--blue);font-weight:700}
+.cad{display:grid;grid-template-columns:330px 1fr;gap:56px;align-items:center;margin-top:30px}
+.loop{position:relative;width:320px;height:320px}
+.loop svg{position:absolute;inset:0}
+.nd{position:absolute;width:84px;height:84px;border-radius:50%;background:#fff;border:3px solid var(--blue);font-weight:700;font-size:16px;color:var(--ink);box-shadow:0 8px 20px rgba(63,91,181,.18)}
+.nd.sel{background:var(--blue);color:#fff}
+.cpanel{background:var(--blush);border-radius:18px;padding:24px 28px;min-height:170px;box-sizing:border-box}
+.cpanel h3{font-size:24px;margin-bottom:8px}
+.cpanel ul{margin:0;padding-left:20px;font-size:17px;line-height:1.65}
+.kp{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.kp::before{content:"KPIs I track";width:100%;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.kp span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px}
+.grow{transform-box:fill-box;transform-origin:left;animation:grow 1.4s .4s ease-out both}
+@keyframes grow{from{transform:scaleX(0)}}
+@media (max-width:760px){
+  .hero h1{font-size:36px}
+  .board{grid-template-columns:1fr}.board div{min-height:0}
+  .cad{grid-template-columns:1fr;gap:20px;margin-top:20px}
+  .loop{transform:scale(.8);transform-origin:left top;height:256px}
+  .cpanel{padding:18px}.cpanel ul{font-size:15px}
+}
+
+/* phone: stacked cards */
+@media (max-width:760px){
+  html,body{height:auto}
+  body{overflow:auto}
+  #viewport{position:static;padding:12px 12px 24px}
+  #stage{position:static;width:auto;height:auto;transform:none!important}
+  .slide{position:relative;inset:auto;display:block!important;padding:28px 20px 48px;margin-bottom:14px;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+  #bar,#prog{display:none}
+  h2{font-size:30px}
+  .split,.sg{grid-template-columns:minmax(0,1fr);height:auto;gap:20px}
+  .badge{width:100%;border-radius:18px}.badge>div:last-child{min-width:0}
+  .hero h1{font-size:40px}
+  .hero .glow{width:360px;height:480px;right:-160px}
+  .hero .art{max-width:260px;margin:0 auto}
+  .nums{grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+  .num{padding:14px}.num b{font-size:26px}.num span{font-size:13.5px}
+  .path{flex-wrap:wrap;row-gap:14px}.path div{flex:0 0 50%}.path div::after{display:none}
+  .meter{position:static;margin-top:14px}.meter b{font-size:32px}
+  .fit{grid-template-columns:1fr;margin-top:14px}
+  .row{min-height:0}.row span{display:none}.row.ok span{display:block}
+  .panel ul{font-size:15.5px}
+  .flow{grid-template-columns:1fr 1fr;gap:20px 12px;margin-top:22px}
+  .flow::before{display:none}
+  .fl .ic{width:70px;height:70px}.fl p{font-size:14px}
+  .res{grid-template-columns:1fr}.res b{font-size:24px}
+  .road{height:auto}.road>svg{display:none}
+  .ms{position:static!important;width:auto;margin-bottom:18px}
+  .goal{position:relative;right:auto;margin:0 auto}
+  .foot{left:20px;right:20px;bottom:14px;font-size:10.5px}
+  .contact span{font-size:14px}
+}
+</style>
+</head><body>
+<div id="prog"></div>
+<div id="viewport"><div id="stage">
+
+<!-- 1 TITLE -->
+<section class="slide hero">
+  <div class="glow"></div>
+  <div class="split">
+    <div class="stack">
+      <div class="eb a">Interview · Jabil</div>
+      <h1 class="a d1">Software Development <em>Project Manager</em></h1>
+      <span class="chip a d2">SDLC · Agile / hybrid · Release</span>
+      <div class="badge a d3"><div class="av">LA</div><div><b>Luqman Asmadi, PMP®</b><small>Project Manager · 7+ years · Malaysia</small></div></div>
+    </div>
+    <div class="art a d2">
+      <svg viewBox="0 0 420 380" aria-hidden="true">
+        <g class="float">
+          <rect x="20" y="40" width="300" height="220" rx="20" fill="#1F2A5C"/>
+          <circle cx="46" cy="64" r="6" fill="#F9B774"/><circle cx="66" cy="64" r="6" fill="#F7E58F"/><circle cx="86" cy="64" r="6" fill="#A8E0B5"/>
+          <g stroke-linecap="round" stroke-width="9">
+            <path d="M48 104h60" stroke="#7D8DDB"/><path d="M120 104h90" stroke="#F7E58F"/>
+            <path d="M70 132h110" stroke="#A8E0B5"/><path d="M192 132h50" stroke="#7D8DDB"/>
+            <path d="M70 160h70" stroke="#F9B774"/><path d="M152 160h100" stroke="#AEBDEA"/>
+            <path d="M48 188h80" stroke="#7D8DDB"/><path d="M140 188h40" stroke="#A8E0B5"/>
+            <path d="M70 216h130" stroke="#AEBDEA"/>
+          </g>
+        </g>
+        <g class="float" style="animation-delay:-2.5s">
+          <rect x="230" y="190" width="170" height="150" rx="18" fill="#fff" stroke="#D6DCF2" stroke-width="2"/>
+          <text x="248" y="222" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#1F2A5C">Sprint 14</text>
+          <rect x="248" y="236" width="134" height="12" rx="6" fill="#DDE3F8"/><rect class="grow" x="248" y="236" width="104" height="12" rx="6" fill="#3F5BB5"/>
+          <g font-family="Inter,sans-serif" font-size="12" fill="#5A6699"><text x="248" y="274">Velocity 42</text><text x="248" y="296">Defects 0 critical</text></g>
+          <circle cx="372" cy="306" r="18" fill="#A8E0B5"/><path d="M363 306l6 6 12-12" fill="none" stroke="#1F2A5C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="foot"><span>Luqman Asmadi</span><span>01 / 08</span></div>
+</section>
+
+<!-- 2 ABOUT -->
+<section class="slide">
+  <div class="eb a">About me</div>
+  <h2 class="a d1">I deliver software, and I have <em>built</em> it myself</h2>
+  <div class="nums">
+    <div class="num a d1"><div class="ic" style="background:#DDE3F8"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3F5BB5" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><b data-n="7" data-s="+">7+</b><span>years in project delivery</span></div>
+    <div class="num a d2"><div class="ic" style="background:#FDEBD7"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C77A1E" stroke-width="2.2" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></div><b data-n="10" data-p="RM" data-s="M+">RM10M+</b><span>portfolio (~USD 2M), 90% on time</span></div>
+    <div class="num a d3"><div class="ic" style="background:#E3F5E8"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F8A4C" stroke-width="2.2" stroke-linecap="round"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg></div><b data-n="3">3</b><span>PM apps built A to Z: ALPHA, OMEGA, SIGMA</span></div>
+    <div class="num a d4"><div class="ic" style="background:#EDE4F7"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8A4FC4" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="9" r="5"/><path d="M8.5 13 7 21l5-3 5 3-1.5-8"/></svg></div><b>PMP®</b><span>plus Kanban, Lean Six Sigma, Google PM</span></div>
+  </div>
+  <div class="path a d5">
+    <div><b>Data Analyst</b>2019</div>
+    <div><b>Project Finance</b>2020</div>
+    <div><b>Project Lead</b>2021</div>
+    <div><b>Project Manager</b>2021 – now</div>
+  </div>
+  <div class="foot"><span>About me</span><span>02 / 08</span></div>
+</section>
+
+<!-- 3 FIT -->
+<section class="slide">
+  <div class="eb a">Your JD vs my track record</div>
+  <h2 class="a d1">Why I <em>fit</em></h2>
+  <div class="meter a d2">
+    <svg width="64" height="64" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92" fill="#DDE3F8"/><circle cx="100" cy="100" r="66" fill="#AEBDEA"/><circle cx="100" cy="100" r="40" fill="#DDE3F8"/><circle cx="100" cy="100" r="18" fill="#3F5BB5"/><path d="M190 14 108 94" stroke="#1F2A5C" stroke-width="9" stroke-linecap="round"/><path d="M190 14l-6 24 22-6z" fill="#F9B774"/></svg>
+    <b id="mtr">0/8</b><button class="ghost" id="all">Match all</button>
+  </div>
+  <div class="fit" id="fit">
+    <button class="row a d1"><span class="t">✓</span><div><b>Full SDLC, requirements to support</b><span>Requirements, design reviews, UAT, go-live and hypercare on every project.</span></div></button>
+    <button class="row a d1"><span class="t">✓</span><div><b>Agile, Scrum, Kanban, hybrid</b><span>Stage gates for sign-off, 2-week sprints for build. Kanban certified.</span></div></button>
+    <button class="row a d2"><span class="t">✓</span><div><b>Plans, budgets, forecasts</b><span>Release plans and resource plans; ex-project finance on RM5M+ portfolios.</span></div></button>
+    <button class="row a d2"><span class="t">✓</span><div><b>Delivery KPIs</b><span>Schedule, budget and quality tracked weekly; cost overruns down 18%.</span></div></button>
+    <button class="row a d3"><span class="t">✓</span><div><b>Risks and dependencies</b><span>RAID log every week; RM2M+ potential losses prevented.</span></div></button>
+    <button class="row a d3"><span class="t">✓</span><div><b>Lead devs, BA, QA, infra</b><span>Cross-functional teams, vendors and business users across projects.</span></div></button>
+    <button class="row a d4"><span class="t">✓</span><div><b>Release and DevOps</b><span>Git, CI/CD and automated deploys on the apps I built; Jira, Confluence.</span></div></button>
+    <button class="row a d4"><span class="t">✓</span><div><b>Report to leadership</b><span>Dashboards and status reports; 100% approval on proposals to management.</span></div></button>
+  </div>
+  <div class="foot"><span>Tap each line</span><span>03 / 08</span></div>
+</section>
+
+<!-- 4 SIGMA -->
+<section class="slide">
+  <div class="eb a">Software I built and shipped</div>
+  <h2 class="a d1"><em>SIGMA</em>: from idea to production, A to Z</h2>
+  <div class="sg">
+    <div>
+      <div class="tabs a d2" id="tabs">
+        <button class="tab sel" data-i="0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3F5BB5" stroke-width="2" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><div><b>Define</b><small>Requirements</small></div></button>
+        <button class="tab" data-i="1"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3F5BB5" stroke-width="2" stroke-linecap="round"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg><div><b>Build</b><small>Stack and design</small></div></button>
+        <button class="tab" data-i="2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3F5BB5" stroke-width="2" stroke-linecap="round"><path d="M5 19c4-1 6-4 7-8M12 11c1-4 4-7 8-8-1 4-4 7-8 8zM9 15l-3 3"/></svg><div><b>Release</b><small>CI/CD</small></div></button>
+        <button class="tab" data-i="3"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3F5BB5" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/></svg><div><b>Govern</b><small>Roles, audit trail</small></div></button>
+      </div>
+      <div class="panel a d3" id="panel"></div>
+      <p class="note a d4">Live, used daily to run our project portfolio.</p>
+    </div>
+    <div class="mock a d3" aria-hidden="true">
+      <div class="top"><i></i><i></i><i></i></div>
+      <div class="board">
+        <div><small>To do</small><span>Payment run export</span><span>Bank recon rules</span></div>
+        <div><small>In progress</small><span class="hot">Role-based access</span><span>Charter PDF</span></div>
+        <div><small>Done</small><span class="ok">Costing calculator</span><span class="ok">Project health</span><span class="ok">Invoices</span></div>
+      </div>
+      <div class="pipe"><span>Commit</span><i>›</i><span>Build</span><i>›</i><span>Preview</span><i>›</i><span class="ok">Deploy</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Tap a stage · board shows sample items</span><span>04 / 08</span></div>
+</section>
+
+<!-- 5 CASE -->
+<section class="slide">
+  <div class="eb a">Client case · Powerline &amp; utilities</div>
+  <h2 class="a d1">From 5-year contract to <em>10-year platform</em></h2>
+  <div class="flow">
+    <div class="fl a d1"><div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3F5BB5" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M7 6h10M5 11h14M8 6l-3 16M16 6l3 16"/></svg></div><span class="k">SITUATION</span><p>5-year asset inspection contract. Data only in reports.</p></div>
+    <div class="fl a d2"><div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3F5BB5" stroke-width="1.8" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg></div><span class="k">TASK</span><p>Turn it into a live asset monitoring app.</p></div>
+    <div class="fl a d3"><div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3F5BB5" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div><span class="k">ACTION</span><p>Wrote the spec, won the tender, delivered in sprints.</p></div>
+    <div class="fl a d4"><div class="ic" style="background:#3F5BB5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="m9.5 12 2 2 3.5-4"/></svg></div><span class="k">RESULT</span><p>Live monitoring app, delivered on time.</p></div>
+  </div>
+  <div class="res a d5">
+    <div><b>10 yrs</b><span>new contract</span></div>
+    <div><b>RM3M</b><span>per year (~USD 0.65M)</span></div>
+    <div><b>AI</b><span>upsell: defect detection</span></div>
+  </div>
+  <div class="foot"><span>Client name confidential</span><span>05 / 08</span></div>
+</section>
+
+<!-- 6 CADENCE -->
+<section class="slide">
+  <div class="eb a">How I run delivery</div>
+  <h2 class="a d1">Hybrid: <em>gates</em> for control, <em>sprints</em> for speed</h2>
+  <div class="cad">
+    <div class="loop a d2">
+      <svg viewBox="0 0 320 320" aria-hidden="true"><circle cx="160" cy="160" r="118" fill="none" stroke="#AEBDEA" stroke-width="6" stroke-dasharray="14 10" class="spin" style="animation-duration:40s"/><text x="160" y="152" text-anchor="middle" font-family="Inter,sans-serif" font-size="15" fill="#5A6699">2-week</text><text x="160" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" font-weight="800" fill="#1F2A5C">Sprint</text></svg>
+      <button class="nd sel" data-c="0" style="left:118px;top:0">Plan</button>
+      <button class="nd" data-c="1" style="left:236px;top:118px">Build</button>
+      <button class="nd" data-c="2" style="left:118px;top:236px">Review</button>
+      <button class="nd" data-c="3" style="left:0;top:118px">Retro</button>
+    </div>
+    <div>
+      <div class="cpanel a d3" id="cpanel"></div>
+      <div class="kp a d4"><span>Schedule adherence</span><span>Sprint velocity</span><span>Release quality</span><span>Budget</span><span>Stakeholder satisfaction</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Tap a step</span><span>06 / 08</span></div>
+</section>
+
+<!-- 7 PLAN -->
+<section class="slide dark">
+  <div class="eb a">If I join Jabil</div>
+  <h2 class="a d1">My first 90 days</h2>
+  <div class="road a d2">
+    <svg viewBox="0 0 1104 440" preserveAspectRatio="none" aria-hidden="true"><path d="M10 410 C 200 410, 230 290, 380 280 S 640 230, 700 170 S 860 90, 940 100" fill="none" stroke="#F7E58F" stroke-width="4" stroke-dasharray="10 10" opacity=".85"/></svg>
+    <div class="ms" style="left:0;top:150px"><div class="pin"></div><span class="k">DAY 1–30</span><h3>Learn</h3><ul><li>Jabil SDLC, tools and standards</li><li>Teams, sponsors, customers</li><li>Current projects and risks</li></ul></div>
+    <div class="ms" style="left:330px;top:30px"><div class="pin"></div><span class="k">DAY 31–60</span><h3>Own</h3><ul><li>Run sprint ceremonies</li><li>One release plan and RAID log</li><li>Weekly KPI and status report</li></ul></div>
+    <div class="ms" style="left:620px;top:220px"><div class="pin"></div><span class="k">DAY 61–90</span><h3>Deliver</h3><ul><li>First release on time</li><li>Clean handover to support</li><li>One process improvement</li></ul></div>
+    <div class="goal"><svg viewBox="0 0 200 200" width="200" height="200"><circle cx="100" cy="100" r="96" fill="#fff"/><circle cx="100" cy="100" r="74" fill="#AEBDEA"/><circle cx="100" cy="100" r="52" fill="#fff"/><circle cx="100" cy="100" r="30" fill="#AEBDEA"/></svg><p>Goal: releases leaders can count on</p></div>
+  </div>
+  <div class="foot"><span>90-day plan</span><span>07 / 08</span></div>
+</section>
+
+<!-- 8 THANKS -->
+<section class="slide hero">
+  <div class="glow"></div>
+  <div class="split">
+    <div class="stack">
+      <div class="eb a">Questions welcome</div>
+      <h1 class="a d1">Thank you.</h1>
+      <div class="contact a d2"><span>nikluqman96@gmail.com</span><span>+60 11-5440 9043</span></div>
+    </div>
+    <div class="art a d2">
+      <svg viewBox="0 0 420 340" aria-hidden="true">
+        <g class="spin"><circle cx="190" cy="170" r="92" fill="#AEBDEA"/><g fill="#AEBDEA"><rect x="176" y="58" width="28" height="34" rx="5"/><rect x="176" y="248" width="28" height="34" rx="5"/><rect x="78" y="156" width="34" height="28" rx="5"/><rect x="268" y="156" width="34" height="28" rx="5"/></g><circle cx="190" cy="170" r="38" fill="#3F5BB5"/></g>
+        <g class="spin r"><circle cx="320" cy="250" r="50" fill="#F7E58F"/><g fill="#F7E58F"><rect x="310" y="186" width="20" height="24" rx="4"/><rect x="310" y="290" width="20" height="24" rx="4"/><rect x="256" y="240" width="24" height="20" rx="4"/><rect x="360" y="240" width="24" height="20" rx="4"/></g><circle cx="320" cy="250" r="18" fill="#1F2A5C"/></g>
+      </svg>
+    </div>
+  </div>
+  <div class="foot"><span>Luqman Asmadi, PMP®</span><span>08 / 08</span></div>
+</section>
+
+</div></div>
+<div id="bar">
+  <button id="prev" aria-label="Previous slide">←</button><span id="count">1 / 8</span><button id="next" aria-label="Next slide">→</button>
+  <button id="bFull">Full screen</button>
+</div>
+<script>
+(()=>{
+const slides=[...document.querySelectorAll('.slide')],stage=document.getElementById('stage');
+let cur=0;
+const phone=matchMedia('(max-width:760px)');
+const still=matchMedia('(prefers-reduced-motion:reduce)');
+function fit(){if(phone.matches){stage.style.transform='none';slides.forEach(x=>x.classList.add('on'));return}
+  slides.forEach((x,i)=>x.classList.toggle('on',i===cur));
+  const s=Math.min(innerWidth/1280,(innerHeight-56)/720);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
+function count(sl){if(still.matches)return;sl.querySelectorAll('[data-n]').forEach(el=>{const t=+el.dataset.n,p=el.dataset.p||'',s=el.dataset.s||'',t0=performance.now();
+  (function step(now){const k=Math.min(1,(now-t0)/1000),e=1-Math.pow(1-k,3);el.textContent=p+Math.round(t*e)+s;if(k<1)requestAnimationFrame(step)})(t0);
+  setTimeout(()=>el.textContent=p+t+s,1100)})}
+function go(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));fit();
+  slides[cur].querySelectorAll('.a,.draw').forEach(el=>{el.style.animation='none';void el.offsetWidth;el.style.animation=''});
+  count(slides[cur]);
+  document.getElementById('count').textContent=`${cur+1} / ${slides.length}`;
+  document.getElementById('prog').style.width=((cur+1)/slides.length*100)+'%';
+  try{history.replaceState(null,'','#s'+(cur+1))}catch(e){}
+}
+addEventListener('resize',fit);
+const h=(location.hash.match(/^#s(\d+)$/)||[])[1];go(h?+h-1:0);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+function full(){try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})}catch(e){}}
+document.getElementById('bFull').onclick=full;
+addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}
+  else if(e.key==='f'||e.key==='F')full();
+});
+let tx=null;addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{if(tx==null||phone.matches)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(cur+(dx<0?1:-1));tx=null});
+let idle;addEventListener('mousemove',()=>{document.body.classList.remove('idle');clearTimeout(idle);idle=setTimeout(()=>document.body.classList.add('idle'),2500)});
+
+/* fit */
+const rows=[...document.querySelectorAll('#fit .row')],mtr=document.getElementById('mtr');
+const upd=()=>mtr.textContent=rows.filter(r=>r.classList.contains('ok')).length+'/'+rows.length;
+rows.forEach(r=>r.onclick=()=>{r.classList.toggle('ok');upd()});
+document.getElementById('all').onclick=()=>{const all=rows.every(r=>r.classList.contains('ok'));rows.forEach((r,i)=>setTimeout(()=>{r.classList.toggle('ok',!all);upd()},all?0:i*110))};
+
+/* SIGMA */
+const P=[['Interviewed PMs, PMO and finance on their pain points','Wrote requirements, user flows and approval rules','Prioritised a roadmap: must-have modules first'],
+ ['Next.js and React front end, Supabase Postgres back end','Server-side role checks on every change','Designed the data model myself'],
+ ['Git on GitHub; every push auto-builds and deploys on Vercel','Preview build checked before users see it','Small, frequent releases instead of big bang'],
+ ['Five roles: PM, HOD, Finance, Approver, AI service','Signed, time-stamped approvals: full audit trail','Handover docs so another developer can take over']];
+const panel=document.getElementById('panel');
+function tab(i){document.querySelectorAll('#tabs .tab').forEach((b,k)=>b.classList.toggle('sel',k===i));panel.innerHTML='<ul>'+P[i].map(x=>`<li>${x}</li>`).join('')+'</ul>'}
+document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>tab(+b.dataset.i));tab(0);
+
+/* cadence */
+const C=[['Sprint planning',['Refine the backlog with the product owner','Commit to a sprint goal the team believes in','Check capacity, dependencies and risks']],
+ ['Build',['Daily stand-up: blockers out in 15 minutes','I remove impediments and protect the team','QA tests inside the sprint, not after']],
+ ['Sprint review',['Demo working software to stakeholders','Capture feedback into the backlog','Update release plan and forecast']],
+ ['Retrospective',['What to keep, stop and start','One improvement into the next sprint','Track it so it sticks']]];
+const cp=document.getElementById('cpanel');
+function cad(i){document.querySelectorAll('.nd').forEach((b,k)=>b.classList.toggle('sel',k===i));cp.innerHTML=`<h3>${C[i][0]}</h3><ul>${C[i][1].map(x=>`<li>${x}</li>`).join('')}</ul>`}
+document.querySelectorAll('.nd').forEach(b=>b.onclick=()=>cad(+b.dataset.c));cad(0);
+})();
+</script>
+</body></html>
